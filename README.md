@@ -42,7 +42,7 @@ The implementation of the neural network accelerator has been successfully carri
 
 ---
 
-### Project 2: Design of a Simple Arithmetic Datapath
+### Project 2: Design of an Arithmetic Datapath
 
 #### Overview
 

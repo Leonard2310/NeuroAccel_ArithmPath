@@ -1,4 +1,4 @@
-# Integrated Systems Architecture - Academic Year 2023-2024
+# Integrated Systems Architecture
 ---
 
 ### Project 1: Neural Network Accelerator Implementation

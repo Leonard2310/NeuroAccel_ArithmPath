@@ -42,20 +42,15 @@ The implementation of the neural network accelerator has been successfully carri
 
 ---
 
-### Conclusion
-
-This project has achieved its goal of providing a hands-on experience in implementing a neural network accelerator. The successful design of neurons, FSM, and communication protocols showcases a strong understanding of the architecture. Feel free to explore and experiment with different configurations and test scenarios to further enhance your comprehension. If you have any questions or encounter issues, please refer to the provided documentation or seek assistance as needed.
-
-
 ### Project 2: Design of a Simple Arithmetic Datapath
 
 #### Overview
 
-This project involves the design of a simple arithmetic datapath that performs various operations based on a 3-bit operation code (opcode). The datapath takes two signed 16-bit inputs (A, B) and produces a 16-bit output (Y) along with a single-bit carry-out signal (co).
+The second project focuses on designing a straightforward arithmetic datapath capable of performing various operations based on a 3-bit operation code (opcode). This datapath processes two signed 16-bit inputs (A, B) and generates a 16-bit output (Y) along with a single-bit carry-out signal (co).
 
 #### Operations and OpCodes
 
-The possible operations, their corresponding opcodes, and computed values are summarized in the table below:
+The table below summarizes the possible operations, their corresponding opcodes, and the computed values:
 
 | Operation          | Short Name | Opcode | Computed Y       | Computed co     |
 |--------------------|------------|--------|-------------------|-----------------|
@@ -70,10 +65,14 @@ The possible operations, their corresponding opcodes, and computed values are su
 
 #### Datapath Architecture
 
-The datapath employs an adder, two multiplexers, and 16 NOT gates to implement the eight operations. The least significant bit of the opcode influences the carry-in of the adder, while the other two bits modify the second input of the adder.
+The datapath's architecture employs an adder, two multiplexers, and 16 NOT gates to implement the eight specified operations. The least significant bit of the opcode determines the carry-in of the adder, while the remaining two bits modify the second input of the adder.
 
 #### Testbench and Verification
 
-A testbench is provided to simulate the correct operation of the circuit. The module declaration of the datapath is also provided with the declaration of the inputs and outputs. Students are required to design the datapath using Verilog and complete the code for the initial procedure defined in the testbench to ensure correct operation.
+A comprehensive testbench is provided to facilitate the simulation of the circuit's correct operation. The module declaration of the datapath, along with the inputs and outputs, is available. Students are tasked with designing the datapath using Verilog and completing the code for the initial procedure defined in the testbench to ensure flawless operation.
 
 ---
+
+### Conclusion
+
+The completion of both projects demonstrates a solid understanding of integrated systems architecture, encompassing the design and implementation of a neural network accelerator and a simple arithmetic datapath. These projects provide valuable hands-on experience in Verilog programming, finite state machine design, and datapath architecture.

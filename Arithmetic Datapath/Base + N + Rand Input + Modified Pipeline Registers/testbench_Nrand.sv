@@ -1,4 +1,4 @@
-`include "datapath.v"
+`include "datapath_NREG.v"
 `timescale 1ns/1ps
 
 module datapathTB;

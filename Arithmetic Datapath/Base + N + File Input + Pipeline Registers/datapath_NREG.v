@@ -1,4 +1,4 @@
-module datapath #(N, pipe)) (A, B, opcode, Y, co);
+module datapath #(parameter N=16, parameter pipe=0) (A, B, opcode, Y, co, clk);
   input signed [N-1:0] A, B;
   input [2:0] opcode;
   output signed [N-1:0] Y;
@@ -13,7 +13,8 @@ module datapath #(N, pipe)) (A, B, opcode, Y, co);
       reg signed [N-1:0] reg_A, reg_B;
       reg [2:0] reg_opcode;
 
-      always @(posedge clk) begin
+      always @(posedge clk) 
+      begin
         reg_A <= A;
         reg_B <= B;
         reg_opcode <= opcode;

@@ -1,11 +1,8 @@
-`define N 16
-`define maxpositive ((2**(`N-1))-1)
-`define minnegative (-2**(`N-1))
-
-`include "datapath.v"
+`include "datapath_NREG.v"
 `timescale 1ns/1ps
 
 module datapathTB;
+  parameter N = 16;
   reg signed [N-1:0] A, B;
   reg [2:0] opcode;
   wire signed [N-1:0] Y;
@@ -14,16 +11,31 @@ module datapathTB;
   reg pipe;
 
   initial begin
+    int file;
+
     $display("Inserisci il valore di pipe (0 o 1): ");
     $scanf("%0d", pipe);
 
     clk = 0;
 
-    int file = $fopen("circuit_input.txt", "r");
-    $fscanf(file, "%d %d %b", A, B, opcode);
-    $fclose(file);
+    file = $fopen("circuit_input.txt", "r");
 
-    $display("[time: %0dns, inputs] A:%0d, B:%0d, opcode:%b, pipe:%0d", $time, A, B, opcode, pipe);
+    if (file == 0)
+      begin
+        $display("File non trovato");
+        $finish;
+      end
+
+    while (!$feof(file)) 
+      begin
+      $fscanf(file, "%d %d %b", A, B, opcode);
+
+      #10;
+      $display("[time: %0dns, sum] A:%0d, B:%0d, Y:%0d, co:%b", $time, A, B, Y, co);
+    end
+
+    $fclose(file);
+    $finish;
 
     // Simulazione per diversi cicli di clock
     #50;
@@ -35,9 +47,9 @@ module datapathTB;
     end
 
     #10;
-    $finish;
+    
   end
 
-  datapath #(N, pipe) myDatapath (.A(A), .B(B), .opcode(opcode), .Y(Y), .co(co), .clk(clk));
+  datapath myDatapath (.A(A), .B(B), .opcode(opcode), .Y(Y), .co(co), .clk(clk));
 
 endmodule

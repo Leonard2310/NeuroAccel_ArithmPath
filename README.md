@@ -75,6 +75,7 @@ The datapath is implemented also with some variants:
   - A parameter is used to define the number of bits for the inputs and outputs of the datapath.
   - In the testbench, a function is implemented for reading inputs from a file containing circuit inputs.
 
+
 2. Base + N + File Input + Pipeline Registers:
   - A parameter is used to define the number of bits for the inputs and outputs of the datapath.
   - In the testbench, a function is implemented for reading inputs from a file containing circuit inputs.
@@ -82,9 +83,11 @@ The datapath is implemented also with some variants:
     - If 'pipe' is 0, the design has no pipeline registers.
     - If 'pipe' is 1, registers are added to the inputs and outputs; it requires an additional clock signal input.
 
+
 3. Base + N + Random Input:
   - A parameter is used to define the number of bits for the inputs and outputs of the datapath.
   - In the testbench, a function is implemented for the random generation of circuit inputs.
+
 
 4. Base + N + Random Input + Modified Pipeline Registers:
   - A parameter is used to define the number of bits for the inputs and outputs of the datapath.
@@ -93,6 +96,7 @@ The datapath is implemented also with some variants:
     - If 'pipe' is 0, the design has no pipeline registers.
     - If 'pipe' is 1, registers are added to the inputs and outputs; it requires an additional clock signal input.
     - If 'pipe' is 2, pipeline registers should be added to inputs, outputs, and in the middle of the adder.
+
 
 #### Testbench and Verification
 

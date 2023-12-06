@@ -15,18 +15,19 @@ module datapathTB;
   
   initial
     begin : initLabel
+      int file;
+      
+      file = $fopen("circuit_input.txt", "r");
 
-      // INIZIALIZZAZIONE DEL SEED
-      $random(seed);
-
-      // GENERA INPUT RANDOMICI
-      A = $random;
-      B = $random;
-      opcode = $random;
+      $fscanf(file, "%d %d %b", A, B, opcode);
+      
+      $display("[Initial inputs] A:%0d, B:%0d, opcode:%b", A, B, opcode);
 
       #10;
       $display("[time: %0dns, sum] A:%0d, B:%0d, Y:%0d, co:%b",$time, A, B, Y, co);
 
+      $fclose(file);
+      
     end
   
 endmodule

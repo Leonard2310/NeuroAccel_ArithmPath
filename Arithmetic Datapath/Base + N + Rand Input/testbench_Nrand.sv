@@ -8,7 +8,7 @@ module datapathTB;
   wire signed [N-1:0] Y;
   wire co;
   
-  datapath myDatapath (.A(A), .B(B), .opcode(opcode), .Y(Y), .co(co));
+  datapath #(.N(N)) myDatapath (.A(A), .B(B), .opcode(opcode), .Y(Y), .co(co)); //cambiato
   
   initial
     begin : initLabel  

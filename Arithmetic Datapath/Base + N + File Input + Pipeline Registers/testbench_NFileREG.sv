@@ -3,14 +3,14 @@
 
 module datapathTB;
   parameter N = 16;
-  parameter pipe = 0;
+  parameter pipe = 1;
   reg signed [N-1:0] A, B;
   reg [2:0] opcode;
   wire signed [N-1:0] Y;
   wire co;
   reg clk;
 
-  datapath myDatapath (.A(A), .B(B), .opcode(opcode), .Y(Y), .co(co), .clk(clk), .pipe(pipe));
+  datapath  #(.N(N), .pipe(pipe)) myDatapath (.A(A), .B(B), .opcode(opcode), .Y(Y), .co(co), .clk(clk)); //cambiato
 
   initial begin
     int file;
@@ -29,14 +29,6 @@ module datapathTB;
       begin
         $fscanf(file, "%d %d %b", A, B, opcode);
 
-        // Imposta pipe a 0
-        pipe = 0;
-        #10; // Aggiungi un ritardo per garantire che l'assegnazione di pipe abbia effetto
-
-        $display("[time: %0dns, sum] A:%0d, B:%0d, Y:%0d, co:%b", $time, A, B, Y, co);
-
-        // Imposta pipe a 1
-        pipe = 1;
         #10; // Aggiungi un ritardo per garantire che l'assegnazione di pipe abbia effetto
 
         $display("[time: %0dns, sum] A:%0d, B:%0d, Y:%0d, co:%b", $time, A, B, Y, co);

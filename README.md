@@ -65,15 +65,38 @@ The table below summarizes the possible operations, their corresponding opcodes,
 
 #### Datapath Architecture
 
-The base datapath's architecture employs an adder, two multiplexers, and 16 NOT gates to implement the eight specified operations. 
+The basic datapath uses an adder, two multiplexers and 16 not gates to implement all the 8 operations. The least significant bit of the opcode feeds the carry-in of the adder. The other two bits change the second input of the adder by either inverting or zero-ing its bits.
 ![Base Architecture Schematic (VIVADO)](https://github.com/Leonard2310/Verilog_Projects/assets/71086591/37958ef8-5e12-43af-8f0f-73fc3f22d125)
 
-The least significant bit of the opcode determines the carry-in of the adder, while the remaining two bits modify the second input of the adder.
+The given instructions outline steps for designing and testing a datapath in Verilog. The key points are as follows:
+The datapath is implemented also with some variants:
 
+1. Base + N + File Input:
+  - A parameter is used to define the number of bits for the inputs and outputs of the datapath.
+  - In the testbench, a function is implemented for reading inputs from a file containing circuit inputs.
+
+2. Base + N + File Input + Pipeline Registers:
+  - A parameter is used to define the number of bits for the inputs and outputs of the datapath.
+  - In the testbench, a function is implemented for reading inputs from a file containing circuit inputs.
+  - A parameter named 'pipe' is added to the design.
+    - If 'pipe' is 0, the design has no pipeline registers.
+    - If 'pipe' is 1, registers are added to the inputs and outputs; it requires an additional clock signal input.
+
+3. Base + N + Random Input:
+  - A parameter is used to define the number of bits for the inputs and outputs of the datapath.
+  - In the testbench, a function is implemented for the random generation of circuit inputs.
+
+4. Base + N + Random Input + Modified Pipeline Registers:
+  - A parameter is used to define the number of bits for the inputs and outputs of the datapath.
+  - In the testbench, a function is implemented for the random generation of circuit inputs.
+  - A parameter named 'pipe' is added to the design.
+    - If 'pipe' is 0, the design has no pipeline registers.
+    - If 'pipe' is 1, registers are added to the inputs and outputs; it requires an additional clock signal input.
+    - If 'pipe' is 2, pipeline registers should be added to inputs, outputs, and in the middle of the adder.
 
 #### Testbench and Verification
 
-A comprehensive testbench is provided to facilitate the simulation of the circuit's correct operation. The module declaration of the datapath, along with the inputs and outputs, is available. Students are tasked with designing the datapath using Verilog and completing the code for the initial procedure defined in the testbench to ensure flawless operation.
+A comprehensive testbench is provided to facilitate the simulation of the circuit's correct operation. The module declaration of the datapath, along with the inputs and outputs, is available. 
 
 ---
 

@@ -100,7 +100,7 @@ The datapath is implemented also with some variants:
 
 #### Testbench and Verification
 
-A comprehensive testbench is provided to facilitate the simulation of the circuit's correct operation. The module declaration of the datapath, along with the inputs and outputs, is available. 
+Comprehensive Testbenches are provided to facilitate the simulation of the circuit's correct operation. The module declaration of the datapath, along with the inputs and outputs, is available. 
 
 ---
 

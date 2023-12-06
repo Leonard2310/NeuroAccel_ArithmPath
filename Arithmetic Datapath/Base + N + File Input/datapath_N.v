@@ -1,4 +1,4 @@
-module datapath #(N) (A, B, opcode, Y, co);
+module datapath #(parameter N=16) (A, B, opcode, Y, co);
   input signed [N-1:0] A, B;
   input [2:0] opcode;
   output signed [N-1:0] Y;

@@ -37,8 +37,26 @@ module datapathTB;
       #10;
       $display("[time: %0dns, sub] A:%0d, B:%0d, Y:%0d, co:%b",$time, A, B, Y, co);
       
-      // add your code here
-	  
+      // operation: A
+      opcode = 3'b100; A = 16'd5; B = 16'd128;
+      #10;
+      $display("[time: %0dns, A] A:%0d, B:%0d, Y:%0d, co:%b", $time, A, B, Y, co);
+
+      // operation: Ai
+      opcode = 3'b101; A = 16'd5; B = 16'd128;
+      #10;
+      $display("[time: %0dns, Ai] A:%0d, B:%0d, Y:%0d, co:%b", $time, A, B, Y, co);
+
+      // operation: Ad
+      opcode = 3'b110; A = 16'd5; B = 16'd128;
+      #10;
+      $display("[time: %0dns, Ad] A:%0d, B:%0d, Y:%0d, co:%b", $time, A, B, Y, co);
+
+      // operation: Adi
+      opcode = 3'b111; A = 16'd5; B = 16'd128;
+      #10;
+      $display("[time: %0dns, Adi] A:%0d, B:%0d, Y:%0d, co:%b", $time, A, B, Y, co);
+    
     end
   
 endmodule

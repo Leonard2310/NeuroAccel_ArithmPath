@@ -12,43 +12,44 @@ module datapathTB;
 
   datapath  #(.N(N), .pipe(pipe)) myDatapath (.A(A), .B(B), .opcode(opcode), .Y(Y), .co(co), .clk(clk)); //cambiato
 
-  initial begin
-    int file;
-    
-    clk = 0;
-    
-    file = $fopen("circuit_input.txt", "r");
+  initial 
+    begin
+      int file;
+      
+      clk = 0;
+      
+      file = $fopen("circuit_input.txt", "r");
 
-    if (file == 0)
-      begin
-        $display("File non trovato");
-        $finish;
+      if (file == 0)
+        begin
+          $display("File non trovato");
+          $finish;
+        end
+
+      while (!$feof(file)) 
+        begin
+          $fscanf(file, "%d %d %b", A, B, opcode);
+
+          #10; // Aggiungi un ritardo per garantire che l'assegnazione di pipe abbia effetto
+
+          $display("[time: %0dns, sum] A:%0d, B:%0d, Y:%0d, co:%b", $time, A, B, Y, co);
+      
+        end
+
+      $fclose(file);
+      $finish;
+      
+      // Simulazione per diversi cicli di clock
+      #50;
+      repeat (10) begin
+        clk = ~clk;
+
+        // Visualizza i risultati sul fronte di salita del clock
+        @(posedge clk) $display("[time: %0dns, result] A:%0d, B:%0d, Y:%0d, co:%b", $time, A, B, Y, co);
       end
 
-    while (!$feof(file)) 
-      begin
-        $fscanf(file, "%d %d %b", A, B, opcode);
-
-        #10; // Aggiungi un ritardo per garantire che l'assegnazione di pipe abbia effetto
-
-        $display("[time: %0dns, sum] A:%0d, B:%0d, Y:%0d, co:%b", $time, A, B, Y, co);
+      #10;
     
-      end
-
-    $fclose(file);
-    $finish;
-    
-    // Simulazione per diversi cicli di clock
-    #50;
-    repeat (10) begin
-      clk = ~clk;
-
-      // Visualizza i risultati sul fronte di salita del clock
-      @(posedge clk) $display("[time: %0dns, result] A:%0d, B:%0d, Y:%0d, co:%b", $time, A, B, Y, co);
     end
-
-    #10;
-    
-  end
   
 endmodule

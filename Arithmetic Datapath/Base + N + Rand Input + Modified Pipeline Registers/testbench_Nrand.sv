@@ -10,7 +10,7 @@ module datapathTB;
   wire co;
   reg clk;
 
-  datapath  #(.N(N), .pipe(pipe)) myDatapath (.A(A), .B(B), .opcode(opcode), .Y(Y), .co(co), .clk(clk)); //cambiato
+  datapath  #(.N(N), .pipe(pipe)) myDatapath (.A(A), .B(B), .opcode(opcode), .Y(Y), .co(co), .clk(clk)); 
 
   initial 
     begin

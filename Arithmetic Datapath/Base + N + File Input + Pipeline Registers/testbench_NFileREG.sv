@@ -3,21 +3,20 @@
 
 module datapathTB;
   parameter N = 16;
+  parameter pipe = 0;
   reg signed [N-1:0] A, B;
   reg [2:0] opcode;
   wire signed [N-1:0] Y;
   wire co;
   reg clk;
-  reg pipe;
+
+  datapath myDatapath (.A(A), .B(B), .opcode(opcode), .Y(Y), .co(co), .clk(clk), .pipe(pipe));
 
   initial begin
     int file;
-
-    $display("Inserisci il valore di pipe (0 o 1): ");
-    $scanf("%0d", pipe);
-
+    
     clk = 0;
-
+    
     file = $fopen("circuit_input.txt", "r");
 
     if (file == 0)
@@ -28,15 +27,25 @@ module datapathTB;
 
     while (!$feof(file)) 
       begin
-      $fscanf(file, "%d %d %b", A, B, opcode);
+        $fscanf(file, "%d %d %b", A, B, opcode);
 
-      #10;
-      $display("[time: %0dns, sum] A:%0d, B:%0d, Y:%0d, co:%b", $time, A, B, Y, co);
-    end
+        // Imposta pipe a 0
+        pipe = 0;
+        #10; // Aggiungi un ritardo per garantire che l'assegnazione di pipe abbia effetto
+
+        $display("[time: %0dns, sum] A:%0d, B:%0d, Y:%0d, co:%b", $time, A, B, Y, co);
+
+        // Imposta pipe a 1
+        pipe = 1;
+        #10; // Aggiungi un ritardo per garantire che l'assegnazione di pipe abbia effetto
+
+        $display("[time: %0dns, sum] A:%0d, B:%0d, Y:%0d, co:%b", $time, A, B, Y, co);
+    
+      end
 
     $fclose(file);
     $finish;
-
+    
     // Simulazione per diversi cicli di clock
     #50;
     repeat (10) begin
@@ -49,7 +58,5 @@ module datapathTB;
     #10;
     
   end
-
-  datapath myDatapath (.A(A), .B(B), .opcode(opcode), .Y(Y), .co(co), .clk(clk));
-
+  
 endmodule

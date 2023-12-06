@@ -1,6 +1,3 @@
-// Code your testbench here
-// or browse Examples
-
 `define maxpositive 32767
 `define minnegative -32768
 

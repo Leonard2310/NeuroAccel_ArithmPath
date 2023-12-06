@@ -1,11 +1,8 @@
-`define N 16
-`define maxpositive ((2**(`N-1))-1)
-`define minnegative (-2**(`N-1))
-
 `include "datapath.v"
 `timescale 1ns/1ps
 
 module datapathTB;
+  parameter N = 16;
   reg signed [N-1:0] A, B;
   reg [2:0] opcode;
   wire signed [N-1:0] Y;
@@ -19,16 +16,27 @@ module datapathTB;
 
     clk = 0;
 
-    // INIZIALIZZAZIONE DEL SEED
-    $random(seed);
-
-    // GENERA INPUT RANDOMICI
     A = $random;
     B = $random;
     opcode = $random;
+  
+    #10;
+    $display("[time: %0dns, sum] opcode:%b, A:%0d, B:%0d, Y:%0d, co:%b", $time, opcode, A, B, Y, co);
 
-    $display("[time: %0dns, inputs] A:%0d, B:%0d, opcode:%b, pipe:%0d", $time, A, B, opcode, pipe);
-
+    A = $random;
+    B = $random;
+      opcode = $random;
+  
+    #10;
+    $display("[time: %0dns, sum] opcode:%b, A:%0d, B:%0d, Y:%0d, co:%b", $time, opcode, A, B, Y, co);
+   
+    A = $random;
+    B = $random;
+      opcode = $random;
+  
+    #10;
+    $display("[time: %0dns, sum] opcode:%b, A:%0d, B:%0d, Y:%0d, co:%b", $time, opcode, A, B, Y, co);
+   
     // Simulazione per diversi cicli di clock
     #50;
     repeat (10) begin
@@ -42,6 +50,6 @@ module datapathTB;
     $finish;
   end
 
-  datapath #(N, pipe) myDatapath (.A(A), .B(B), .opcode(opcode), .Y(Y), .co(co), .clk(clk));
+  datapath myDatapath (.A(A), .B(B), .opcode(opcode), .Y(Y), .co(co), .clk(clk));
 
 endmodule

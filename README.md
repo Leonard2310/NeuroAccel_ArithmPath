@@ -65,7 +65,11 @@ The table below summarizes the possible operations, their corresponding opcodes,
 
 #### Datapath Architecture
 
-The datapath's architecture employs an adder, two multiplexers, and 16 NOT gates to implement the eight specified operations. The least significant bit of the opcode determines the carry-in of the adder, while the remaining two bits modify the second input of the adder.
+The base datapath's architecture employs an adder, two multiplexers, and 16 NOT gates to implement the eight specified operations. 
+![Base Architecture Schematic (VIVADO)](https://github.com/Leonard2310/Verilog_Projects/assets/71086591/37958ef8-5e12-43af-8f0f-73fc3f22d125)
+
+The least significant bit of the opcode determines the carry-in of the adder, while the remaining two bits modify the second input of the adder.
+
 
 #### Testbench and Verification
 

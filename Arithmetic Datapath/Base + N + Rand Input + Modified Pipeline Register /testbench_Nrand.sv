@@ -14,16 +14,20 @@ module datapathTB;
   reg pipe;
 
   initial begin
-    $display("Inserisci il valore di pipe (0 o 1): ");
-    $scanf("%b", pipe);
+    $display("Inserisci il valore di pipe (0, 1 o 2): ");
+    $scanf("%0d", pipe);
 
     clk = 0;
 
-    int file = $fopen("circuit_input.txt", "r");
-    $fscanf(file, "%d %d %b", A, B, opcode);
-    $fclose(file);
+    // INIZIALIZZAZIONE DEL SEED
+    $random(seed);
 
-    $display("[time: %0dns, inputs] A:%0d, B:%0d, opcode:%b, pipe:%b", $time, A, B, opcode, pipe);
+    // GENERA INPUT RANDOMICI
+    A = $random;
+    B = $random;
+    opcode = $random;
+
+    $display("[time: %0dns, inputs] A:%0d, B:%0d, opcode:%b, pipe:%0d", $time, A, B, opcode, pipe);
 
     // Simulazione per diversi cicli di clock
     #50;

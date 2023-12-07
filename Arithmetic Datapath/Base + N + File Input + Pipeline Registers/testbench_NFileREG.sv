@@ -34,7 +34,7 @@ module datapathTB;
         begin
           $fscanf(file, "%d %d %b", A, B, opcode);
 
-          #10; // Aggiungi un ritardo per garantire che l'assegnazione di pipe abbia effetto
+          #20; // Aggiungi un ritardo per garantire che l'assegnazione di pipe abbia effetto
 
           $display("[time: %0dns, sum] A:%0d, B:%0d, Y:%0d, co:%b", $time, A, B, Y, co);
       

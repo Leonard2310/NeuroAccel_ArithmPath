@@ -24,21 +24,21 @@ module datapathTB;
       B = $random;
       opcode = $random;
     
-      #10;
+      #30;
       $display("[time: %0dns, sum] opcode:%b, A:%0d, B:%0d, Y:%0d, co:%b", $time, opcode, A, B, Y, co);
 
       A = $random;
       B = $random;
       opcode = $random;
     
-      #10;
+      #30;
       $display("[time: %0dns, sum] opcode:%b, A:%0d, B:%0d, Y:%0d, co:%b", $time, opcode, A, B, Y, co);
     
       A = $random;
       B = $random;
       opcode = $random;
     
-      #10;
+      #30;
       $display("[time: %0dns, sum] opcode:%b, A:%0d, B:%0d, Y:%0d, co:%b", $time, opcode, A, B, Y, co);
     
       #50;

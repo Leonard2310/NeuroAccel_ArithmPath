@@ -103,14 +103,14 @@ module acc_pipe(X1, X2, X3, X4, Y, ready, valid, ready_out, valid_out, clk, arst
 			endcase
 		end
 
-	always @(posedge clk or posedge arst)
+	always @(posedge clk)
 		begin
 
 			N1 neuron (.X1(X1), .X2(X2), .X3(X3), .X4(X4), .W1(n1_w1), .W2(n1_w2), .W3(n1_w3), .W4(n1_w4), 
-						.bias(n1_bias), .xmin(n1_xmin), .xmax(n1_xmax), .Y(Y1)));
+						.bias(n1_bias), .xmin(n1_xmin), .xmax(n1_xmax), .Y(Y1));
 
 			N2 neuron (.X1(X1), .X2(X2), .X3(X3), .X4(X4), .W1(n2_w1), .W2(n2_w2), .W3(n2_w3), .W4(n2_w4), 
-						.bias(n2_bias), .xmin(n2_xmin), .xmax(n2_xmax), .Y(Y2)));
+						.bias(n2_bias), .xmin(n2_xmin), .xmax(n2_xmax), .Y(Y2));
 	
 			if(enable1) 
 				begin
@@ -122,7 +122,7 @@ module acc_pipe(X1, X2, X3, X4, Y, ready, valid, ready_out, valid_out, clk, arst
 							assign S2 = Y2;
 
 							N3 neuron (.X1(S1), .X2(S2), .X3(0), .X4(0), .W1(n3_w1), .W2(n3_w2), .W3(n3_w3), .W4(n3_w4), 
-										.bias(n3_bias), .xmin(n3_xmin), .xmax(n3_xmax), .Y(Y3)));
+										.bias(n3_bias), .xmin(n3_xmin), .xmax(n3_xmax), .Y(Y3));
 
 							if(enable3)
 								begin

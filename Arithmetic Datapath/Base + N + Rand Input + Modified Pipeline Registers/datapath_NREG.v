@@ -8,55 +8,63 @@ module datapath #(parameter N=16, parameter pipe = 1) (A, B, opcode, Y, co, clk)
   wire [N-1:0] output_mux1;
   wire [N-1:0] output_mux2; 
    
-  reg signed [N-1:0] reg_A1, reg_A2, reg_B1, reg_B2;
-  reg [2:0] reg_opcode1, reg_opcode2;
-  reg [N-1:0] Y_reg1, Y_reg2;
-  reg co_reg1, co_reg2;
+  reg signed [N-1:0] reg_A, reg_B;
+  reg [2:0] reg_opcode;
+  reg [(N/2)-1:0] add_regL, add_regM;
+  reg [(N/2)-1:0] reg_AL, reg_AM, reg_BL, reg_BM;
+  reg [N-1:0] Y_reg;
+  reg co_reg, reg_coL, reg_coM;
   
   generate
     if(pipe == 1)
       begin
         always @ (posedge clk)
           begin
-            reg_A1 <= A;
-            reg_B1 <= B;
-            reg_opcode1 <= opcode;
+            reg_A <= A;
+            reg_B <= B;
+            reg_opcode <= opcode;
           end 
   
         // MUX 1: Scelta tra 0 e registro B
-        assign output_mux1 = (reg_opcode1[2]) ? {N{1'b0}} : reg_B1;  
+        assign output_mux1 = (reg_opcode[2]) ? {N{1'b0}} : reg_B;  
 
         // MUX 2: Scelta tra l'uscita negata del MUX1 e l'uscita del MUX1
-        assign output_mux2 = (reg_opcode1[1]) ? ~output_mux1 : output_mux1;
+        assign output_mux2 = (reg_opcode[1]) ? ~output_mux1 : output_mux1;
 
         // ADDER: Se generato il diciassettesimo bit va nella concatenazione in carry-out 
-        assign {co_reg1, Y_reg1} = (reg_A1 + output_mux2 + reg_opcode1[0]); 
+        assign {co_reg, Y_reg} = (reg_A + output_mux2 + reg_opcode[0]); 
         
-        assign co = co_reg1;
-        assign Y = Y_reg1;
+        assign co = co_reg;
+        assign Y = Y_reg;
       end
     else if(pipe == 2)
       begin
       	always @ (posedge clk)
           begin
-        	reg_A2 <= A;
-        	reg_B2 <= B;
-            reg_opcode2 <= opcode;
+        	  reg_A <= A;
+        	  reg_B <= B;
+            reg_opcode <= opcode;
           end 
 
          // MUX 1: Scelta tra 0 e registro B
-         assign output_mux1 = (reg_opcode2[2]) ? {N{1'b0}} : reg_B2;
+         assign output_mux1 = (reg_opcode[2]) ? {N{1'b0}} : reg_B;
 
          // MUX 2: Scelta tra l'uscita negata del MUX1 e l'uscita del MUX1
-         assign output_mux2 = (reg_opcode2[1]) ? ~output_mux1 : output_mux1;
+         assign output_mux2 = (reg_opcode[1]) ? ~output_mux1 : output_mux1;
          
-         // TODO: METTERE REGISTRI NELL'ADDER
+         assign reg_AL = reg_A[(N/2)-1:0];
+         assign reg_AM = reg_A[N-1:(N/2)];
 
-         // ADDER: Se generato il diciassettesimo bit va nella concatenazione in carry-out
-         assign {co_reg2, Y_reg2} = (reg_A2 + output_mux2 + reg_opcode2[0]);
+         assign reg_BL = output_mux2[(N/2)-1:0];
+         assign reg_BM = output_mux2[N-1:(N/2)];
 
-         assign co = co_reg2;
-         assign Y = Y_reg2;
+         assign {reg_coL, add_regL} = reg_AL + reg_BL;
+         assign {reg_coM, add_regM} = reg_AM + reg_BM;
+
+         assign {co_reg, Y_reg} = {add_regM, add_regL} + reg_coL + reg_coM + reg_opcode[0];
+
+         assign co = co_reg;
+         assign Y = Y_reg;
       end
     else
       begin

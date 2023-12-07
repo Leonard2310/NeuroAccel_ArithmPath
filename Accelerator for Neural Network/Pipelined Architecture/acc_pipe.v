@@ -130,16 +130,16 @@ module acc_pipe(X1, X2, X3, X4, Y, ready, valid, ready_out, valid_out, clk, arst
 	
 			if(enable1) 
 				begin
-					assign S1 = Y1;
+					S1 <= Y1;
 
 					if(enable2)
 						begin
 
-							assign S2 = Y2;
+							S2 <= Y2;
 
 							if(enable3)
 								begin
-									assign Y_reg = Y3;
+									Y_reg <= Y3;
 								end
 						end
 				end

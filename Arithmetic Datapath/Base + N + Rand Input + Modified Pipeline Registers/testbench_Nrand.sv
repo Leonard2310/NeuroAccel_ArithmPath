@@ -12,6 +12,10 @@ module datapathTB;
 
   datapath  #(.N(N), .pipe(pipe)) myDatapath (.A(A), .B(B), .opcode(opcode), .Y(Y), .co(co), .clk(clk)); 
 
+  always 
+  	#5 
+    clk = ~clk;
+  
   initial 
     begin
       clk = 0;
@@ -37,16 +41,11 @@ module datapathTB;
       #10;
       $display("[time: %0dns, sum] opcode:%b, A:%0d, B:%0d, Y:%0d, co:%b", $time, opcode, A, B, Y, co);
     
-      // Simulazione per diversi cicli di clock
       #50;
-      repeat (10) begin
-        clk = ~clk;
 
-        // Visualizza i risultati sul fronte di salita del clock
-        @(posedge clk) $display("[time: %0dns, result] A:%0d, B:%0d, Y:%0d, co:%b", $time, A, B, Y, co);
-      end
+      @(posedge clk) 
+        	$display("[time: %0dns, result] A:%0d, B:%0d, Y:%0d, co:%b", $time, A, B, Y, co);
 
-      #10;
 
     end
 

@@ -1,7 +1,7 @@
 # Embedded Systems Architecture
 ---
 
-### Project 1: Neural Network Accelerator Implementation
+### Project 1: Neural Network Accelerator
 ---
 
 ### Project Overview

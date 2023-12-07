@@ -1,4 +1,4 @@
-# Integrated Systems Architecture
+# Embedded Systems Architecture
 ---
 
 ### Project 1: Neural Network Accelerator Implementation
@@ -105,4 +105,4 @@ Comprehensive Testbenches are provided to facilitate the simulation of the circu
 
 ### Conclusion
 
-The completion of both projects demonstrates a solid understanding of integrated systems architecture, encompassing the design and implementation of a neural network accelerator and a simple arithmetic datapath. These projects provide valuable hands-on experience in Verilog programming, finite state machine design, and datapath architecture.
+The completion of both projects demonstrates a solid understanding of embedded systems architecture, encompassing the design and implementation of a neural network accelerator and an arithmetic datapath. These projects provide valuable hands-on experience in Verilog programming, finite state machine design and datapath architecture.

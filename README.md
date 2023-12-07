@@ -68,7 +68,6 @@ The table below summarizes the possible operations, their corresponding opcodes,
 The basic datapath uses an adder, two multiplexers and 16 not gates to implement all the 8 operations. The least significant bit of the opcode feeds the carry-in of the adder. The other two bits change the second input of the adder by either inverting or zero-ing its bits.
 ![Base Architecture Schematic (VIVADO)](https://github.com/Leonard2310/Verilog_Projects/assets/71086591/37958ef8-5e12-43af-8f0f-73fc3f22d125)
 
-The given instructions outline steps for designing and testing a datapath in Verilog. The key points are as follows:
 The datapath is implemented also with some variants:
 
 1. Base + N + File Input:

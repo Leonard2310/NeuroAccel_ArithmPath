@@ -3,7 +3,7 @@
 
 module datapathTB;
   parameter N = 16;
-  parameter pipe = 1;
+  parameter pipe = 2;
   reg signed [N-1:0] A, B;
   reg [2:0] opcode;
   wire signed [N-1:0] Y;

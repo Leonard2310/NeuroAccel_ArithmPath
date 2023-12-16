@@ -33,7 +33,6 @@ module acc_pipe(X1, X2, X3, X4, Y, ready, valid, ready_out, valid_out, clk, arst
 	parameter [11:0] n3_xmin = -12'd127;
 	parameter [11:0] n3_xmax = 12'd127;
 
-	// TODO: DA FARE
 	reg signed [7:0] IN1_N1, IN2_N1, IN3_N1, IN4_N1, IN1_N2, IN2_N2, IN3_N2, IN4_N2;
 	reg signed [7:0] W1_N1, W2_N1, W3_N1, W4_N1, W1_N2, W2_N2, W3_N2, W4_N2;
 	reg signed [15:0] BIAS_N1, BIAS_N2;

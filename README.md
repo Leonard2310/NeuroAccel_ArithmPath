@@ -19,6 +19,8 @@ The neuron performs arithmetic operations based on weighted sums and activation 
 
 The Verilog description of the neuron, encapsulated within the "neuron.v" module, is complete and functional. The activation function, a separate module instantiated within the neuron, aligns with the expected design.
 
+![Neuron Schematic (VIVADO)](https://github.com/Leonard2310/Verilog_Projects/assets/71086591/7dd0efdd-1cfa-4d7f-bf2d-ade161298d33)
+
 ---
 
 ### Neural Network Architecture
@@ -28,6 +30,8 @@ The neural network's implementation involves three interconnected neurons, with 
 #### Pipelined Architecture
 
 The pipelined architecture features three neurons operating in stages, with registers updated at each clock cycle. The FSM controls data flow and communication using signals such as ready, valid, ready_out, and valid_out.
+
+![Accellerator Pipelined Schematic (VIVADO)](https://github.com/Leonard2310/Verilog_Projects/assets/71086591/c6062add-8517-461d-bcf6-a133b78aee8f)
 
 #### Scalable Architecture
 

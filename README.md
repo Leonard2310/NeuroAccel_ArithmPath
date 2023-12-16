@@ -2,11 +2,10 @@
 ---
 
 ### Project 1: Neural Network Accelerator
----
 
-### Project Overview
+#### Overview
 
-This project has successfully implemented a simple accelerator for a convolutional neural network, emphasizing the integration of an architecture featuring an arithmetic datapath and a finite state machine (FSM). The accelerator efficiently processes inputs X1, X2, X3, and X4, producing the desired output value Y. The comprehensive design covers neurons, FSM operations, and communication protocols within the accelerator.
+This project focuses on the development of a simple accelerator for a convolutional neural network (CNN) based on a specific architecture. The CNN takes four integer inputs, X1, X2, X3, and X4, and produces a single integer output, Y. The accelerator comprises an arithmetic datapath and a finite state machine (FSM).
 
 ---
 
@@ -14,31 +13,31 @@ This project has successfully implemented a simple accelerator for a convolution
 
 #### Neuron Operation
 
-The implemented neuron effectively performs arithmetic operations based on weighted sums and activation functions. The Verilog description involves a multi-operand add operation followed by the activation function. Inputs, weights, and biases are meticulously defined as 8-bit 2's complement values, while the results are accurately expressed as fractional 16-bit values. The activation function adeptly saturates the output within specified limits.
+The neuron performs arithmetic operations based on weighted sums and activation functions. The Verilog description includes a multi-operand add operation followed by an activation function. Inputs, weights, and biases are 8-bit 2's complement values, and results are 16-bit fractional values. The activation function saturates the output within specified limits.
 
 #### Neuron Verilog Description
 
-The Verilog description of the neuron, encapsulated within the "neuron.v" module, is complete and functional. The activation function, as a separate module instantiated within the neuron, also aligns with the expected design. The provided Verilog files, "neuron.v" and "tb_neuron.v," have been successfully utilized for testing, employing precomputed inputs and outputs.
+The Verilog description of the neuron, encapsulated within the "neuron.v" module, is complete and functional. The activation function, a separate module instantiated within the neuron, aligns with the expected design.
 
 ---
 
 ### Neural Network Architecture
 
-The neural network's implementation is well-rounded, utilizing three interconnected neurons. Two distinct datapath architectures, including a pipelined version and a scalable architecture, have been successfully realized.
+The neural network's implementation involves three interconnected neurons, with two distinct datapath architectures: a pipelined version and a scalable architecture.
 
 #### Pipelined Architecture
 
-The pipelined architecture features three neurons operating in stages, with registers consistently updated at each clock cycle. The FSM aptly controls the data flow and communication between feeder and consumer circuits, effectively utilizing ready, valid, ready_out, and valid_out signals.
+The pipelined architecture features three neurons operating in stages, with registers updated at each clock cycle. The FSM controls data flow and communication using signals such as ready, valid, ready_out, and valid_out.
 
 #### Scalable Architecture
 
-The scalable architecture introduces flexibility by utilizing two neurons, accommodating various configurations within the neural network. The FSM's adept scheduling ensures efficient computations, and the design easily adapts to different neuron configurations.
+The scalable architecture utilizes two neurons, accommodating various configurations within the neural network. The FSM's scheduling ensures efficient computations, adapting to different neuron configurations.
 
 ---
 
 ### Implementation and Testing
 
-The implementation of the neural network accelerator has been successfully carried out using Verilog files "acc_pipe.v" and "tb_accelerator.sv." The testbench, equipped with precomputed inputs and outputs in "accel_in.dat" and "accel_out.dat," has effectively verified the correct functionality of the accelerator module.
+The neural network accelerator's implementation uses Verilog files "acc_pipe.v" and "tb_accelerator.sv." The testbench, equipped with precomputed inputs and outputs in "accel_in.dat" and "accel_out.dat," verifies the correct functionality of the accelerator module.
 
 ---
 

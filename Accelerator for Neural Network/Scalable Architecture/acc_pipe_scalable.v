@@ -75,6 +75,9 @@ module acc_pipe(X1, X2, X3, X4, Y, ready, valid, ready_out, valid_out, clk, arst
 						T3: current_state <= (ready_out) ? T4 : T3;
 						T5: current_state <= T4;
 						T4: current_state <= T0;
+						default:
+							current_state <= T0;
+
 					endcase
 				end
 		end

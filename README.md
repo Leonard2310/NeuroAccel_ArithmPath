@@ -109,3 +109,10 @@ Comprehensive Testbenches are provided to facilitate the simulation of the circu
 ### Conclusion
 
 The completion of both projects demonstrates a solid understanding of embedded systems architecture, encompassing the design and implementation of a neural network accelerator and an arithmetic datapath. These projects provide valuable hands-on experience in Verilog programming, finite state machine design and datapath architecture.
+
+### Authors
+- [Leonardo Catello](https://github.com/Leonard2310) 
+- [Lorenzo Manco](https://github.com/Rasbon99) 
+
+### License
+This project is licensed under the [GNU General Public License v2.0]. Refer to the LICENSE file for more information.

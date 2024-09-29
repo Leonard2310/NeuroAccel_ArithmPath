@@ -77,7 +77,6 @@ The datapath is implemented also with some variants:
   - A parameter is used to define the number of bits for the inputs and outputs of the datapath.
   - In the testbench, a function is implemented for reading inputs from a file containing circuit inputs.
 
-
 2. Base + N + File Input + Pipeline Registers:
   - A parameter is used to define the number of bits for the inputs and outputs of the datapath.
   - In the testbench, a function is implemented for reading inputs from a file containing circuit inputs.
